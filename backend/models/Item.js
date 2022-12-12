@@ -49,9 +49,9 @@ ItemSchema.methods.updateFavoriteCount = function () {
 ItemSchema.methods.toJSONFor = function (user) {
   return {
     slug: this.slug,
-    title: this.title || fallbackImage,
+    title: this.title,
     description: this.description,
-    image: this.image,
+    image: this.image || fallbackImage,
     createdAt: this.createdAt,
     updatedAt: this.updatedAt,
     tagList: this.tagList,
