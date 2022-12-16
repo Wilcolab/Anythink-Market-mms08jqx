@@ -49,13 +49,13 @@ router.get("/", auth.optional, function (req, res, next) {
     offset = req.query.offset;
   }
 
+  if (typeof req.query.tag !== "undefined") {
+    query.tagList = { $in: [req.query.tag] };
+  }
+
   if (typeof req.query.title !== "undefined") {
     const regex = new RegExp(req.query.title, "i");
     query.title = { $regex: regex };
-  }
-
-  if (typeof req.query.tag !== "undefined") {
-    query.tagList = { $in: [req.query.tag] };
   }
 
   Promise.all([
